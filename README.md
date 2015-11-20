@@ -7,16 +7,20 @@ This application implements a RPC server with a TCP inteface.
 
 ## Running the server
 
-1. Clone the repository
-2. Compile the code
+* Clone the repository
+* Compile the code
 
-    $ erlc tr_server.erl
+    $ erlc -o ebin src/*.erl
 
-3. Start Erlang shell with `erl` and init the server
+* Start Erlang shell adding compiled code to load path
 
-    $ tr_server:start_link(1055).
+    $ erl -pa ebin
 
-4. Start a simple tcp client to send messages to the server
+* Start the application
+
+    $ application:start(tcp_rpc).
+
+* Start a simple tcp client to send messages to the server
 
     $ telnet localhost 1055
     io:fwrite("~p~n", ["Hello RCP server!"]).
